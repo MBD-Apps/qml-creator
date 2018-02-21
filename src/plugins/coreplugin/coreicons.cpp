@@ -66,6 +66,8 @@ const Icon FIND_PRESERVE_CASE(
         QLatin1String(":/find/images/preservecase.png"));
 const Icon QTCREATORLOGO_BIG(
         QLatin1String(":/core/images/qtcreatorlogo-big.png"));
+const Icon QMLCREATORLOGO_BIG(
+        QLatin1String(":/core/images/qmlcreatorlogo-big.png"));
 
 const Icon ARROW_UP({
         {QLatin1String(":/core/images/arrowup.png"), Theme::IconsBaseColor}});

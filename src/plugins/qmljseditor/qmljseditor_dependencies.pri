@@ -8,5 +8,5 @@ QTC_LIB_DEPENDS += \
 QTC_PLUGIN_DEPENDS += \
     coreplugin \
     texteditor \
-    projectexplorer \
+    #projectexplorer \
     qmljstools

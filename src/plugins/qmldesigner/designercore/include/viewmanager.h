@@ -29,9 +29,9 @@
 
 #include <QWidgetAction>
 
-namespace ProjectExplorer {
-class Kit;
-}
+//namespace ProjectExplorer {
+//class Kit;
+//}
 
 namespace QmlDesigner {
 
@@ -62,7 +62,7 @@ public:
     void setItemLibraryViewResourcePath(const QString &resourcePath);
     void setComponentNode(const ModelNode &componentNode);
     void setComponentViewToMaster();
-    void setNodeInstanceViewKit(ProjectExplorer::Kit *kit);
+    //void setNodeInstanceViewKit(ProjectExplorer::Kit *kit);
 
     void resetPropertyEditorView();
 

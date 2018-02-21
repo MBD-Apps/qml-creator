@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
         .arg(QString::number(parentPid)));
     if (argc > 2 || !parentExecutable.contains(QLatin1String("qtcreator"))) {
         QTextStream err(stderr);
-        err << QString::fromLatin1("This crash handler will be called by Qt Creator itself. "
+        err << QString::fromLatin1("This crash handler will be called by QML Creator itself. "
                                    "Do not call this manually.\n");
         return EXIT_FAILURE;
     }

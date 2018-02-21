@@ -50,6 +50,7 @@ CORE_EXPORT extern const Utils::Icon FIND_WHOLE_WORD;
 CORE_EXPORT extern const Utils::Icon FIND_REGEXP;
 CORE_EXPORT extern const Utils::Icon FIND_PRESERVE_CASE;
 CORE_EXPORT extern const Utils::Icon QTCREATORLOGO_BIG;
+CORE_EXPORT extern const Utils::Icon QMLCREATORLOGO_BIG;
 
 CORE_EXPORT extern const Utils::Icon ARROW_UP;
 CORE_EXPORT extern const Utils::Icon ARROW_DOWN;

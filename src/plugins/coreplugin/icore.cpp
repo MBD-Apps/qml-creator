@@ -477,7 +477,7 @@ QString ICore::versionString()
 #ifdef IDE_VERSION_DESCRIPTION
     ideVersionDescription = tr(" (%1)").arg(QLatin1String(Constants::IDE_VERSION_DESCRIPTION_STR));
 #endif
-    return tr("Qt Creator %1%2").arg(QLatin1String(Constants::IDE_VERSION_LONG),
+    return tr("QML Creator %1%2").arg(QLatin1String(Constants::IDE_VERSION_LONG),
                                      ideVersionDescription);
 }
 

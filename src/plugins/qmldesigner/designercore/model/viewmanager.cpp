@@ -90,7 +90,7 @@ DesignDocument *ViewManager::currentDesignDocument() const
 
 void ViewManager::attachNodeInstanceView()
 {
-    setNodeInstanceViewKit(currentDesignDocument()->currentKit());
+    //setNodeInstanceViewKit(currentDesignDocument()->currentKit());
     currentModel()->setNodeInstanceView(&d->nodeInstanceView);
 }
 
@@ -221,10 +221,10 @@ void ViewManager::setComponentViewToMaster()
     d->componentView.setComponentToMaster();
 }
 
-void ViewManager::setNodeInstanceViewKit(ProjectExplorer::Kit *kit)
-{
-    d->nodeInstanceView.setKit(kit);
-}
+//void ViewManager::setNodeInstanceViewKit(ProjectExplorer::Kit *kit)
+//{
+//    d->nodeInstanceView.setKit(kit);
+//}
 
 QList<WidgetInfo> ViewManager::widgetInfos()
 {

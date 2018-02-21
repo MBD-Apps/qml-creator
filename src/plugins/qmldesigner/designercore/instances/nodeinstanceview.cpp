@@ -103,7 +103,7 @@ NodeInstanceView::NodeInstanceView(QObject *parent, NodeInstanceServerInterface:
         : AbstractView(parent),
           m_baseStatePreviewImage(QSize(100, 100), QImage::Format_ARGB32),
           m_runModus(runModus),
-          m_currentKit(0),
+          //m_currentKit(0),
           m_restartProcessTimerId(0)
 {
     m_baseStatePreviewImage.fill(0xFFFFFF);
@@ -117,7 +117,7 @@ NodeInstanceView::~NodeInstanceView()
 {
     removeAllInstanceNodeRelationships();
     delete nodeInstanceServer();
-    m_currentKit = 0;
+    //m_currentKit = 0;
 }
 
 //\{
@@ -151,7 +151,8 @@ bool isSkippedNode(const ModelNode &node)
 void NodeInstanceView::modelAttached(Model *model)
 {
     AbstractView::modelAttached(model);
-    m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus, m_currentKit);
+    //m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus, m_currentKit);
+    m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus);
     m_lastCrashTime.start();
     connect(m_nodeInstanceServer.data(), SIGNAL(processCrashed()), this, SLOT(handleChrash()));
 
@@ -203,7 +204,8 @@ void NodeInstanceView::restartProcess()
     if (model()) {
         delete nodeInstanceServer();
 
-        m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus, m_currentKit);
+        //m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus, m_currentKit);
+        m_nodeInstanceServer = new NodeInstanceServerProxy(this, m_runModus);
         connect(m_nodeInstanceServer.data(), SIGNAL(processCrashed()), this, SLOT(handleChrash()));
 
         if (!isSkippedRootNode(rootModelNode()))
@@ -1125,13 +1127,13 @@ QImage NodeInstanceView::statePreviewImage(const ModelNode &stateNode) const
     return m_statePreviewImage.value(stateNode);
 }
 
-void NodeInstanceView::setKit(ProjectExplorer::Kit *newKit)
-{
-    if (m_currentKit != newKit) {
-        m_currentKit = newKit;
-        restartProcess();
-    }
-}
+//void NodeInstanceView::setKit(ProjectExplorer::Kit *newKit)
+//{
+//    if (m_currentKit != newKit) {
+//        m_currentKit = newKit;
+//        restartProcess();
+//    }
+//}
 
 void NodeInstanceView::statePreviewImagesChanged(const StatePreviewImageChangedCommand &command)
 {

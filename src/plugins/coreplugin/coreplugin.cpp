@@ -56,6 +56,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QMenu>
+#include <QFileInfo>
 #include <QUuid>
 
 using namespace Core;
@@ -66,7 +67,7 @@ CorePlugin::CorePlugin()
   : m_mainWindow(0)
   , m_editMode(0)
   , m_designMode(0)
-  , m_locator(0)
+  //, m_locator(0)
 {
     qRegisterMetaType<Id>();
 }
@@ -76,7 +77,7 @@ CorePlugin::~CorePlugin()
     IWizardFactory::destroyFeatureProvider();
     Find::destroy();
 
-    delete m_locator;
+    //delete m_locator;
 
     if (m_editMode) {
         removeObject(m_editMode);
@@ -136,7 +137,7 @@ void CorePlugin::parseArguments(const QStringList &arguments)
     // because they need a valid theme set
     m_mainWindow = new MainWindow;
     ActionManager::setPresentationModeEnabled(presentationMode);
-    m_locator = new Locator;
+    //m_locator = new Locator;
 
     if (overrideColor.isValid())
         m_mainWindow->setOverrideColor(overrideColor);
@@ -167,7 +168,7 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
     SaveFile::initializeUmask();
 
     Find::initialize();
-    m_locator->initialize(this, arguments, errorMessage);
+    //m_locator->initialize(this, arguments, errorMessage);
 
     MacroExpander *expander = Utils::globalMacroExpander();
     expander->registerVariable("CurrentDate:ISO", tr("The current date (ISO)."),
@@ -186,13 +187,13 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
                                []() { return DocumentManager::projectsDirectory(); });
     expander->registerVariable("Config:LastFileDialogDirectory", tr("The directory last visited in a file dialog."),
                                []() { return DocumentManager::fileDialogLastVisitedDirectory(); });
-    expander->registerVariable("HostOs:isWindows", tr("Is Qt Creator running on Windows?"),
+    expander->registerVariable("HostOs:isWindows", tr("Is QML Creator running on Windows?"),
                                []() { return QVariant(Utils::HostOsInfo::isWindowsHost()).toString(); });
-    expander->registerVariable("HostOs:isOSX", tr("Is Qt Creator running on OS X?"),
+    expander->registerVariable("HostOs:isOSX", tr("Is QML Creator running on OS X?"),
                                []() { return QVariant(Utils::HostOsInfo::isMacHost()).toString(); });
-    expander->registerVariable("HostOs:isLinux", tr("Is Qt Creator running on Linux?"),
+    expander->registerVariable("HostOs:isLinux", tr("Is QML Creator running on Linux?"),
                                []() { return QVariant(Utils::HostOsInfo::isLinuxHost()).toString(); });
-    expander->registerVariable("HostOs:isUnix", tr("Is Qt Creator running on any unix-based platform?"),
+    expander->registerVariable("HostOs:isUnix", tr("Is QML Creator running on any unix-based platform?"),
                                []() { return QVariant(Utils::HostOsInfo::isAnyUnixHost()).toString(); });
     expander->registerPrefix("CurrentDate:", tr("The current date (QDate formatstring)."),
                              [](const QString &fmt) { return QDate::currentDate().toString(fmt); });
@@ -216,7 +217,7 @@ void CorePlugin::extensionsInitialized()
     if (m_designMode->designModeIsRequired())
         addObject(m_designMode);
     Find::extensionsInitialized();
-    m_locator->extensionsInitialized();
+    //m_locator->extensionsInitialized();
     m_mainWindow->extensionsInitialized();
     if (ExtensionSystem::PluginManager::hasError()) {
         auto errorOverview = new ExtensionSystem::PluginErrorOverview(m_mainWindow);
@@ -224,12 +225,17 @@ void CorePlugin::extensionsInitialized()
         errorOverview->setModal(true);
         errorOverview->show();
     }
+    foreach (QString arg, ExtensionSystem::PluginManager::arguments()) {
+        QFileInfo fileInfoForArg(arg);
+        if (fileInfoForArg.exists() && fileInfoForArg.isFile())
+            m_mainWindow->openFiles(QStringList(arg), ICore::CanContainLineAndColumnNumbers);
+    }
 }
 
 bool CorePlugin::delayedInitialize()
 {
     HelpManager::setupHelpManager();
-    m_locator->delayedInitialize();
+    //m_locator->delayedInitialize();
     IWizardFactory::allWizardFactories(); // scan for all wizard factories
     return true;
 }

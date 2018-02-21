@@ -56,8 +56,10 @@ public:
         QTextBlock block = doc->findBlock(selection.selectionStart());
         const QTextBlock end = doc->findBlock(selection.selectionEnd()).next();
 
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
+        Q_UNUSED(fileName)
+        //const TextEditor::TabSettings &tabSettings =
+        //    ProjectExplorer::actualTabSettings(fileName, textDocument);
+        const TextEditor::TabSettings &tabSettings = textDocument->tabSettings();
         CreatorCodeFormatter codeFormatter(tabSettings);
         codeFormatter.updateStateUntil(block);
 
@@ -74,8 +76,10 @@ public:
                                    const QString &fileName,
                                    const TextEditor::TextDocument *textDocument) const
     {
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
+        Q_UNUSED(fileName)
+        //const TextEditor::TabSettings &tabSettings =
+        //    ProjectExplorer::actualTabSettings(fileName, textDocument);
+        const TextEditor::TabSettings &tabSettings = textDocument->tabSettings();
 
         QmlJSEditor::Internal::Indenter indenter;
         indenter.reindent(selection.document(), selection, tabSettings);

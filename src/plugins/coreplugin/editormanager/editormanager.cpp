@@ -1769,7 +1769,7 @@ void EditorManagerPrivate::updateWindowTitleForDocument(IDocument *document, QWi
         windowTitle.append(dashSep);
     }
 
-    windowTitle.append(tr("Qt Creator"));
+    windowTitle.append(tr("QML Creator"));
     window->window()->setWindowTitle(windowTitle);
     window->window()->setWindowFilePath(filePath);
 
@@ -2699,8 +2699,10 @@ void EditorManager::addCloseEditorListener(const std::function<bool (IEditor *)>
 
 QStringList EditorManager::getOpenFileNames()
 {
-    QString selectedFilter;
-    const QString &fileFilters = Utils::MimeDatabase::allFiltersString(&selectedFilter);
+    //QString selectedFilter;
+    QString selectedFilter = tr("QML (*.qml)");
+    //const QString &fileFilters = Utils::MimeDatabase::allFiltersString(&selectedFilter);
+    const QString &fileFilters = tr("QML (*.qml)");
     return DocumentManager::getOpenFileNames(fileFilters, QString(), &selectedFilter);
 }
 

@@ -26,27 +26,27 @@
 #include "qmljsmodelmanager.h"
 #include "qmljstoolsconstants.h"
 #include "qmljssemanticinfo.h"
-#include "qmljsbundleprovider.h"
+//#include "qmljsbundleprovider.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/documentmodel.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <coreplugin/messagemanager.h>
 #include <coreplugin/progressmanager/progressmanager.h>
-#include <cpptools/cppmodelmanager.h>
+//#include <cpptools/cppmodelmanager.h>
 #include <extensionsystem/pluginmanager.h>
-#include <projectexplorer/buildconfiguration.h>
-#include <projectexplorer/project.h>
+//#include <projectexplorer/buildconfiguration.h>
+//#include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorerconstants.h>
-#include <projectexplorer/projecttree.h>
-#include <projectexplorer/session.h>
-#include <projectexplorer/target.h>
+//#include <projectexplorer/projecttree.h>
+//#include <projectexplorer/session.h>
+//#include <projectexplorer/target.h>
 #include <qmljs/qmljsbind.h>
 #include <qmljs/qmljsfindexportedcpptypes.h>
 #include <qmljs/qmljsplugindumper.h>
 #include <qtsupport/qmldumptool.h>
-#include <qtsupport/qtkitinformation.h>
-#include <qtsupport/qtsupportconstants.h>
+//#include <qtsupport/qtkitinformation.h>
+//#include <qtsupport/qtsupportconstants.h>
 #include <texteditor/textdocument.h>
 #include <utils/hostosinfo.h>
 #include <utils/mimetypes/mimedatabase.h>
@@ -64,12 +64,12 @@
 
 using namespace Utils;
 using namespace Core;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;
 using namespace QmlJS;
 
 namespace QmlJSTools {
 namespace Internal {
-
+/*
 ModelManagerInterface::ProjectInfo ModelManager::defaultProjectInfoForProject(
         Project *project) const
 {
@@ -130,9 +130,9 @@ ModelManagerInterface::ProjectInfo ModelManager::defaultProjectInfoForProject(
     setupProjectInfoQmlBundles(projectInfo);
     return projectInfo;
 }
-
+*/
 } // namespace Internal
-
+/*
 void setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &projectInfo)
 {
     Target *activeTarget = 0;
@@ -165,7 +165,7 @@ void setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &projectInfo)
         }
     }
 }
-
+*/
 namespace Internal {
 
 
@@ -216,7 +216,7 @@ ModelManager::~ModelManager()
 
 void ModelManager::delayedInitialization()
 {
-    CppTools::CppModelManager *cppModelManager = CppTools::CppModelManager::instance();
+/*    CppTools::CppModelManager *cppModelManager = CppTools::CppModelManager::instance();
     // It's important to have a direct connection here so we can prevent
     // the source and AST of the cpp document being cleaned away.
     connect(cppModelManager, &CppTools::CppModelManager::documentUpdated,
@@ -226,7 +226,7 @@ void ModelManager::delayedInitialization()
             this, &ModelManager::removeProjectInfo);
     connect(SessionManager::instance(), &SessionManager::startupProjectChanged,
             this, &ModelManager::updateDefaultProjectInfo);
-
+*/
     ViewerContext qbsVContext;
     qbsVContext.language = Dialect::QmlQbs;
     qbsVContext.maybeAddPath(ICore::resourcePath() + QLatin1String("/qbs"));
@@ -264,7 +264,7 @@ ModelManagerInterface::WorkingCopy ModelManager::workingCopyInternal() const
 
     return workingCopy;
 }
-
+/*
 void ModelManager::updateDefaultProjectInfo()
 {
     // needs to be performed in the ui thread
@@ -273,7 +273,7 @@ void ModelManager::updateDefaultProjectInfo()
                                                     defaultProjectInfoForProject(currentProject));
     setDefaultProject(projectInfo(currentProject,newDefaultProjectInfo), currentProject);
 }
-
+*/
 
 void ModelManager::addTaskInternal(QFuture<void> result, const QString &msg, const char *taskId) const
 {

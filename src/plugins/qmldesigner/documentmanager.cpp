@@ -40,12 +40,12 @@
 #include <coreplugin/vcsmanager.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/messagebox.h>
-#include <projectexplorer/session.h>
-#include <projectexplorer/projectnodes.h>
-#include <projectexplorer/project.h>
+//#include <projectexplorer/session.h>
+//#include <projectexplorer/projectnodes.h>
+//#include <projectexplorer/project.h>
 
-#include <qmakeprojectmanager/qmakenodes.h>
-#include <qmakeprojectmanager/qmakeproject.h>
+//#include <qmakeprojectmanager/qmakenodes.h>
+//#include <qmakeprojectmanager/qmakeproject.h>
 
 #include <QMessageBox>
 
@@ -351,7 +351,7 @@ Utils::FileName DocumentManager::currentFilePath()
 {
     return QmlDesignerPlugin::instance()->documentManager().currentDesignDocument()->fileName();
 }
-
+/*
 QStringList DocumentManager::isoIconsQmakeVariableValue(const QString &proPath)
 {
     ProjectExplorer::Node *node = ProjectExplorer::SessionManager::nodeForFile(Utils::FileName::fromString(proPath));
@@ -476,6 +476,6 @@ bool DocumentManager::addResourceFileToIsoProject(const QString &resourceFilePro
     }
     return true;
 }
-
+*/
 
 } // namespace QmlDesigner

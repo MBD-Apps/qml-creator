@@ -401,7 +401,7 @@ void MimeTypeSettingsPrivate::resetMimeTypes()
     m_userModifiedMimeTypes.clear(); // settings file will be removed with next settings-save
     QMessageBox::information(ICore::dialogParent(),
                              tr("Reset MIME Types"),
-                             tr("Changes will take effect after Qt Creator restart."));
+                             tr("Changes will take effect after QML Creator restart."));
 }
 
 void MimeTypeSettingsPrivate::setFilterPattern(const QString &pattern)

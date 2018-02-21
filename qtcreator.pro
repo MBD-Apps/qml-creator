@@ -6,14 +6,14 @@ include(qtcreator.pri)
     error("Use at least Qt 5.5.0.")
 }
 
-include(doc/doc.pri)
+#include(doc/doc.pri)
 
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
 SUBDIRS = src share
 unix:!macx:!isEmpty(copydata):SUBDIRS += bin
-!isEmpty(BUILD_TESTS):SUBDIRS += tests
+#!isEmpty(BUILD_TESTS):SUBDIRS += tests
 
 DISTFILES += dist/copyright_template.txt \
     README.md \
@@ -94,8 +94,8 @@ macx:INSTALLER_NAME = "qt-creator-$${QTCREATOR_VERSION}"
 else:INSTALLER_NAME = "$${BASENAME}"
 
 macx {
-    APPBUNDLE = "$$OUT_PWD/bin/Qt Creator.app"
-    BINDIST_SOURCE = "$$OUT_PWD/bin/Qt Creator.app"
+    APPBUNDLE = "$$OUT_PWD/bin/QML Creator.app"
+    BINDIST_SOURCE = "$$OUT_PWD/bin/QML Creator.app"
     BINDIST_INSTALLER_SOURCE = $$BINDIST_SOURCE
     deployqt.commands = $$PWD/scripts/deployqtHelper_mac.sh \"$${APPBUNDLE}\" \"$$[QT_INSTALL_TRANSLATIONS]\" \"$$[QT_INSTALL_PLUGINS]\" \"$$[QT_INSTALL_IMPORTS]\" \"$$[QT_INSTALL_QML]\"
     codesign.commands = codesign --deep -s \"$(SIGNING_IDENTITY)\" $(SIGNING_FLAGS) \"$${APPBUNDLE}\"

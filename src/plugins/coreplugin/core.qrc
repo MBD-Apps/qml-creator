@@ -112,5 +112,7 @@
         <file>images/collapse@2x.png</file>
         <file>images/expand.png</file>
         <file>images/expand@2x.png</file>
+        <file alias="images/qmlcreatorlogo-big.png">images/logo/128/MBDApps-qmlcreator.png</file>
+        <file alias="images/qmlcreatorlogo-big@2x.png">images/logo/256/MBDApps-qmlcreator.png</file>
     </qresource>
 </RCC>

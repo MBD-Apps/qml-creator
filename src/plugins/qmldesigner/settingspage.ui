@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>670</width>
-    <height>475</height>
+    <height>498</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -168,6 +168,9 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_04">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>QML Emulation Layer</string>
      </property>
@@ -198,19 +201,19 @@
          </widget>
         </item>
         <item>
-         <widget class="Utils::PathChooser" name="fallbackPuppetPathLineEdit">
+         <widget class="Utils::PathChooser" name="fallbackPuppetPathLineEdit" native="true">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="toolTip">
-           <string>Path where Qt Creator can find the QML emulation layer executable (qmlpuppet).</string>
+           <string>Path where QML Creator can find the QML emulation layer executable (qmlpuppet).</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="resetFallbackPuppetPathButton">
           <property name="toolTip">
-           <string>Resets the path to the QML emulation layer that comes with Qt Creator.</string>
+           <string>Resets the path to the QML emulation layer that comes with QML Creator.</string>
           </property>
           <property name="text">
            <string>Reset Path</string>
@@ -239,9 +242,9 @@
          </widget>
         </item>
         <item>
-         <widget class="Utils::PathChooser" name="puppetBuildPathLineEdit">
+         <widget class="Utils::PathChooser" name="puppetBuildPathLineEdit" native="true">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -315,6 +318,9 @@
         </item>
         <item row="2" column="0">
          <widget class="QCheckBox" name="designerWarningsUiQmlfiles">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="toolTip">
            <string>Qt Quick Designer will propose to open .ui.qml files instead of opening a .qml file.</string>
           </property>
@@ -463,8 +469,13 @@
  <customwidgets>
   <customwidget>
    <class>Utils::PathChooser</class>
-   <extends>QLineEdit</extends>
+   <extends>QWidget</extends>
    <header location="global">utils/pathchooser.h</header>
+   <container>1</container>
+   <slots>
+    <signal>editingFinished()</signal>
+    <signal>browsingFinished()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

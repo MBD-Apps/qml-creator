@@ -84,7 +84,7 @@ private:
     MainWindow *m_mainWindow;
     EditMode *m_editMode;
     DesignMode *m_designMode;
-    Locator *m_locator;
+    //Locator *m_locator;
 };
 
 } // namespace Internal

@@ -32,9 +32,9 @@
 
 #include <coreplugin/id.h>
 
-namespace ProjectExplorer {
-class Kit;
-}
+//namespace ProjectExplorer {
+//class Kit;
+//}
 
 namespace QmlDesigner {
 
@@ -49,7 +49,8 @@ public:
         UserSpacePuppet
     };
 
-    PuppetCreator(ProjectExplorer::Kit *kit, const QString &qtCreatorVersion, const Model *model);
+    //PuppetCreator(ProjectExplorer::Kit *kit, const QString &qtCreatorVersion, const Model *model);
+    PuppetCreator(const QString &qtCreatorVersion, const Model *model);
     ~PuppetCreator();
 
     void createPuppetExecutableIfMissing();
@@ -60,14 +61,14 @@ public:
                                   const char *outputSlot,
                                   const char *finishSlot) const;
 
-    QString compileLog() const;
+    //QString compileLog() const;
 
     void setQrcMappingString(const QString qrcMapping);
 
     static QString defaultPuppetToplevelBuildDirectory();
     static QString defaultPuppetFallbackDirectory();
 protected:
-    bool build(const QString &qmlPuppetProjectFilePath) const;
+    //bool build(const QString &qmlPuppetProjectFilePath) const;
 
     void createQml2PuppetExecutableIfMissing();
 
@@ -76,18 +77,18 @@ protected:
     QString qmlPuppetDirectory(PuppetType puppetPathType) const;
     QString qml2PuppetPath(PuppetType puppetType) const;
 
-    bool startBuildProcess(const QString &buildDirectoryPath,
-                           const QString &command,
-                           const QStringList &processArguments = QStringList(),
-                           PuppetBuildProgressDialog *progressDialog = 0) const;
-    static QString puppetSourceDirectoryPath();
-    static QString qml2PuppetProjectFile();
-    static QString qmlPuppetProjectFile();
+    //bool startBuildProcess(const QString &buildDirectoryPath,
+    //                       const QString &command,
+    //                       const QStringList &processArguments = QStringList(),
+    //                       PuppetBuildProgressDialog *progressDialog = 0) const;
+    //static QString puppetSourceDirectoryPath();
+    //static QString qml2PuppetProjectFile();
+    //static QString qmlPuppetProjectFile();
 
-    bool checkPuppetIsReady(const QString &puppetPath) const;
-    bool checkQml2PuppetIsReady() const;
-    bool qtIsSupported() const;
-    static bool checkPuppetVersion(const QString &qmlPuppetPath);
+    //bool checkPuppetIsReady(const QString &puppetPath) const;
+    //bool checkQml2PuppetIsReady() const;
+    //bool qtIsSupported() const;
+    //static bool checkPuppetVersion(const QString &qmlPuppetPath);
     QProcess *puppetProcess(const QString &puppetPath,
                             const QString &workingDirectory,
                             const QString &puppetMode,
@@ -98,21 +99,21 @@ protected:
 
     QProcessEnvironment processEnvironment() const;
 
-    QString buildCommand() const;
-    QString qmakeCommand() const;
+    //QString buildCommand() const;
+    //QString qmakeCommand() const;
 
-    QByteArray qtHash() const;
-    QDateTime qtLastModified() const;
-    QDateTime puppetSourceLastModified() const;
+    //QByteArray qtHash() const;
+    //QDateTime qtLastModified() const;
+    //QDateTime puppetSourceLastModified() const;
 
     bool useOnlyFallbackPuppet() const;
 
 private:
     QString m_qtCreatorVersion;
-    mutable QString m_compileLog;
-    ProjectExplorer::Kit *m_kit;
+    //mutable QString m_compileLog;
+    //ProjectExplorer::Kit *m_kit;
     PuppetType m_availablePuppetType;
-    static QHash<Core::Id, PuppetType> m_qml2PuppetForKitPuppetHash;
+    //static QHash<Core::Id, PuppetType> m_qml2PuppetForKitPuppetHash;
     const Model *m_model;
 #ifndef QMLDESIGNER_TEST
     const DesignerSettings m_designerSettings;

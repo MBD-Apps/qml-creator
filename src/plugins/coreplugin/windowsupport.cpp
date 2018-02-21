@@ -191,7 +191,7 @@ void WindowList::updateTitle(QWidget *window)
     QTC_ASSERT(index >= 0, return);
     QTC_ASSERT(index < m_windowActions.size(), return);
     QString title = window->windowTitle();
-    if (title.endsWith(QStringLiteral("- Qt Creator")))
+    if (title.endsWith(QStringLiteral("- QML Creator")))
         title.chop(12);
     m_windowActions.at(index)->setText(title.trimmed());
 }

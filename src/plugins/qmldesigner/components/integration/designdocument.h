@@ -42,9 +42,9 @@ class QWidget;
 class QPlainTextEdit;
 QT_END_NAMESPACE
 
-namespace ProjectExplorer {
-class Kit;
-}
+//namespace ProjectExplorer {
+//class Kit;
+//}
 
 namespace QmlDesigner {
 
@@ -90,7 +90,7 @@ public:
     TextEditor::BaseTextEditor *textEditor() const;
     QPlainTextEdit *plainTextEdit() const;
     Utils::FileName fileName() const;
-    ProjectExplorer::Kit *currentKit() const;
+    //ProjectExplorer::Kit *currentKit() const;
     bool isDocumentLoaded() const;
 
     void resetToDocumentModel();
@@ -114,7 +114,7 @@ public slots:
     void selectAll();
     void undo();
     void redo();
-    void updateActiveQtVersion();
+    //void updateActiveQtVersion();
     void changeToSubComponent(const ModelNode &componentNode);
     void changeToMaster();
 
@@ -124,7 +124,7 @@ private slots:
 private: // functions
     void changeToInFileComponentModel(ComponentTextModifier *textModifer);
 
-    void updateQrcFiles();
+    //void updateQrcFiles();
 
     QWidget *centralWidget() const;
     QString pathToQt() const;
@@ -151,7 +151,7 @@ private: // variables
     QScopedPointer<RewriterView> m_rewriterView;
 
     bool m_documentLoaded;
-    ProjectExplorer::Kit *m_currentKit;
+    //ProjectExplorer::Kit *m_currentKit;
 };
 
 } // namespace QmlDesigner

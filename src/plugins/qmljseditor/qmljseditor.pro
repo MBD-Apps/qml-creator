@@ -11,11 +11,11 @@ HEADERS += \
     qmlexpressionundercursor.h \
     qmljshighlighter.h \
     qmljshoverhandler.h \
-    qmljspreviewrunner.h \
+    #qmljspreviewrunner.h \
     qmljscomponentfromobjectdef.h \
     qmljsoutline.h \
     qmloutlinemodel.h \
-    qmltaskmanager.h \
+    #qmltaskmanager.h \
     qmljsoutlinetreeview.h \
     quicktoolbarsettingspage.h \
     quicktoolbar.h \
@@ -39,11 +39,11 @@ SOURCES += \
     qmlexpressionundercursor.cpp \
     qmljshighlighter.cpp \
     qmljshoverhandler.cpp \
-    qmljspreviewrunner.cpp \
+    #qmljspreviewrunner.cpp \
     qmljscomponentfromobjectdef.cpp \
     qmljsoutline.cpp \
     qmloutlinemodel.cpp \
-    qmltaskmanager.cpp \
+    #qmltaskmanager.cpp \
     qmljsquickfixes.cpp \
     qmljsoutlinetreeview.cpp \
     quicktoolbarsettingspage.cpp \

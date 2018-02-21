@@ -80,7 +80,7 @@ public:
 
 private:
     void currentEditorChanged(Core::IEditor *editor);
-    void runSemanticScan();
+    //void runSemanticScan();
     void checkCurrentEditorSemanticInfoUpToDate();
 
     Core::Command *addToolAction(QAction *a, Core::Context &context, Core::Id id,
@@ -90,7 +90,7 @@ private:
 
     QmlJS::ModelManagerInterface *m_modelManager;
     QmlJSQuickFixAssistProvider *m_quickFixAssistProvider;
-    QmlTaskManager *m_qmlTaskManager;
+    //QmlTaskManager *m_qmlTaskManager;
 
     QAction *m_reformatFileAction;
 

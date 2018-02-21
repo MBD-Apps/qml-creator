@@ -8,15 +8,15 @@ SUBDIRS   = \
     utils \
     languageutils \
     cplusplus \
-    modelinglib \
+    #modelinglib \
     qmljs \
-    qmldebug \
-    qmleditorwidgets \
-    glsl \
-    ssh \
-    timeline \
-    sqlite \
-    clangbackendipc
+    #qmldebug \
+    qmleditorwidgets
+    #glsl \
+    #ssh \
+    #timeline \
+    #sqlite \
+    #clangbackendipc
 
 for(l, SUBDIRS) {
     QTC_LIB_DEPENDS =
@@ -25,13 +25,13 @@ for(l, SUBDIRS) {
     $$lv = $$QTC_LIB_DEPENDS
 }
 
-SUBDIRS += \
-    utils/process_stub.pro
-
-win32:SUBDIRS += utils/process_ctrlc_stub.pro
-
-# Windows: Compile Qt Creator CDB extension if Debugging tools can be detected.
-win32 {
-    include(qtcreatorcdbext/cdb_detect.pri)
-    exists($$CDB_PATH):SUBDIRS += qtcreatorcdbext
-}
+#SUBDIRS += \
+#    utils/process_stub.pro
+#
+#win32:SUBDIRS += utils/process_ctrlc_stub.pro
+#
+## Windows: Compile Qt Creator CDB extension if Debugging tools can be detected.
+#win32 {
+#    include(qtcreatorcdbext/cdb_detect.pri)
+#    exists($$CDB_PATH):SUBDIRS += qtcreatorcdbext
+#}

@@ -116,6 +116,7 @@ signals:
 
 public slots:
     void openFileWith();
+    void newFile();
     void exit();
 
     bool showOptionsDialog(Id page = Id(), QWidget *parent = 0);
@@ -179,10 +180,10 @@ private:
 
     GeneralSettings *m_generalSettings;
     SystemSettings *m_systemSettings;
-    ShortcutSettings *m_shortcutSettings;
-    ToolSettings *m_toolSettings;
-    MimeTypeSettings *m_mimeTypeSettings;
-    SystemEditor *m_systemEditor;
+    //ShortcutSettings *m_shortcutSettings;
+    //ToolSettings *m_toolSettings;
+    //MimeTypeSettings *m_mimeTypeSettings;
+    //SystemEditor *m_systemEditor;
 
     // actions
     QAction *m_focusToEditor;

@@ -175,7 +175,7 @@ void ThemeChooser::apply()
                                                    QLatin1String(Constants::DEFAULT_THEME)).toString();
     if (currentThemeId != themeId) {
         QMessageBox::information(ICore::mainWindow(), tr("Restart Required"),
-                                 tr("The theme change will take effect after a restart of Qt Creator."));
+                                 tr("The theme change will take effect after a restart of QML Creator."));
 
         // save filename of selected theme in global config
         settings->setValue(QLatin1String(Constants::SETTINGS_THEME), themeId);
