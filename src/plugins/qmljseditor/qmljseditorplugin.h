@@ -81,7 +81,7 @@ public:
 
 private:
     void currentEditorChanged(Core::IEditor *editor);
-    void runSemanticScan();
+    //void runSemanticScan();
     void checkCurrentEditorSemanticInfoUpToDate();
     void autoFormatOnSave(Core::IDocument *document);
 
@@ -92,7 +92,7 @@ private:
 
     QmlJS::ModelManagerInterface *m_modelManager;
     QmlJSQuickFixAssistProvider *m_quickFixAssistProvider;
-    QmlTaskManager *m_qmlTaskManager;
+    //QmlTaskManager *m_qmlTaskManager;
 
     QAction *m_reformatFileAction;
 

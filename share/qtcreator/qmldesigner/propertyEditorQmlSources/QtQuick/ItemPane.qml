@@ -133,6 +133,27 @@ Rectangle {
                             }
                         }
                     }
+                    
+                    Label {
+                        text: qsTr("Object Name")
+                    }
+
+                    SecondColumnLayout {
+                        LineEdit {
+                            backendValue: backendValues.objectName
+                            placeholderText: qsTr("Objet Name")
+                            text: backendValues.objectName.value
+                            Layout.fillWidth: true
+                            showTranslateCheckBox: false
+                            showExtendedFunctionButton: false
+                        }
+                        // workaround: without this item the lineedit does not shrink to the
+                        // right size after resizing to a wider width
+                        Item {
+                            width: 0
+                            height: 1
+                        }
+                    }
                 }
             }
 

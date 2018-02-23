@@ -36,14 +36,14 @@
 #include <viewmanager.h>
 #include <nodeinstanceview.h>
 
-#include <projectexplorer/projecttree.h>
-#include <projectexplorer/project.h>
-#include <projectexplorer/target.h>
-#include <projectexplorer/session.h>
-#include <projectexplorer/kit.h>
-#include <qtsupport/qtkitinformation.h>
-#include <qtsupport/qtsupportconstants.h>
-#include <qtsupport/qtversionmanager.h>
+//#include <projectexplorer/projecttree.h>
+//#include <projectexplorer/project.h>
+//#include <projectexplorer/target.h>
+//#include <projectexplorer/session.h>
+//#include <projectexplorer/kit.h>
+//#include <qtsupport/qtkitinformation.h>
+//#include <qtsupport/qtsupportconstants.h>
+//#include <qtsupport/qtversionmanager.h>
 #include <coreplugin/idocument.h>
 #include <coreplugin/editormanager/editormanager.h>
 
@@ -56,7 +56,7 @@
 #include <QPlainTextEdit>
 #include <QApplication>
 
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;
 
 enum {
     debug = false
@@ -76,8 +76,8 @@ DesignDocument::DesignDocument(QObject *parent) :
         m_documentModel(Model::create("QtQuick.Item", 1, 0)),
         m_subComponentManager(new SubComponentManager(m_documentModel.data(), this)),
         m_rewriterView (new RewriterView(RewriterView::Amend, m_documentModel.data())),
-        m_documentLoaded(false),
-        m_currentKit(0)
+        m_documentLoaded(false)
+        //m_currentKit(0)
 {
 }
 
@@ -217,10 +217,10 @@ Utils::FileName DesignDocument::fileName() const
     return editor()->document()->filePath();
 }
 
-Kit *DesignDocument::currentKit() const
-{
-    return m_currentKit;
-}
+//Kit *DesignDocument::currentKit() const
+//{
+//    return m_currentKit;
+//}
 
 bool DesignDocument::isDocumentLoaded() const
 {
@@ -245,7 +245,7 @@ void DesignDocument::loadDocument(QPlainTextEdit *edit)
 
     m_documentTextModifier.reset(new BaseTextEditModifier(dynamic_cast<TextEditor::TextEditorWidget*>(plainTextEdit())));
 
-    connect(m_documentTextModifier.data(), &TextModifier::textChanged, this, &DesignDocument::updateQrcFiles);
+    //connect(m_documentTextModifier.data(), &TextModifier::textChanged, this, &DesignDocument::updateQrcFiles);
 
     m_documentModel->setTextModifier(m_documentTextModifier.data());
 
@@ -253,7 +253,7 @@ void DesignDocument::loadDocument(QPlainTextEdit *edit)
 
     updateFileName(Utils::FileName(), fileName());
 
-    updateQrcFiles();
+    //updateQrcFiles();
 
     m_documentLoaded = true;
 }
@@ -282,7 +282,7 @@ void DesignDocument::changeToInFileComponentModel(ComponentTextModifier *textMod
     viewManager().attachRewriterView();
     viewManager().attachViewsExceptRewriterAndComponetView();
 }
-
+/*
 void DesignDocument::updateQrcFiles()
 {
     ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName());
@@ -294,7 +294,7 @@ void DesignDocument::updateQrcFiles()
         }
     }
 }
-
+*/
 void DesignDocument::changeToSubComponent(const ModelNode &componentNode)
 {
     if (QmlDesignerPlugin::instance()->currentDesignDocument() != this)
@@ -616,8 +616,8 @@ void DesignDocument::setEditor(Core::IEditor *editor)
     connect(editor->document(), &Core::IDocument::filePathChanged,
             this, &DesignDocument::updateFileName);
 
-    updateActiveQtVersion();
-    updateCurrentProject();
+    //updateActiveQtVersion();
+    //updateCurrentProject();
 }
 
 Core::IEditor *DesignDocument::editor() const
@@ -658,7 +658,7 @@ void DesignDocument::redo()
 
     viewManager().resetPropertyEditorView();
 }
-
+/*
 static inline Kit *getActiveKit(DesignDocument *designDocument)
 {
     ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(designDocument->fileName());
@@ -707,7 +707,7 @@ void DesignDocument::updateCurrentProject()
     ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName());
     viewManager().setNodeInstanceViewProject(currentProject);
 }
-
+*/
 QString DesignDocument::contextHelpId() const
 {
     if (view())

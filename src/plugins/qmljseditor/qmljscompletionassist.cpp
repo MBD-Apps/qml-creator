@@ -49,7 +49,7 @@
 #include <qmljs/qmljscompletioncontextfinder.h>
 #include <qmljs/qmljsbundle.h>
 #include <qmljs/qmljsscopebuilder.h>
-#include <projectexplorer/projecttree.h>
+//#include <projectexplorer/projecttree.h>
 
 #include <QFile>
 #include <QFileInfo>
@@ -678,7 +678,7 @@ IAssistProposal *QmlJSCompletionAssistProcessor::perform(const AssistInterface *
 
     // currently path-in-stringliteral is the only completion available in imports
     if (contextFinder.isInImport()) {
-        ModelManagerInterface::ProjectInfo pInfo = ModelManagerInterface::instance()
+/*        ModelManagerInterface::ProjectInfo pInfo = ModelManagerInterface::instance()
                 ->projectInfo(ProjectExplorer::ProjectTree::currentProject());
         QmlBundle platform = pInfo.extendedBundle.bundleForLanguage(document->language());
         if (!platform.supportedImports().isEmpty()) {
@@ -705,7 +705,7 @@ IAssistProposal *QmlJSCompletionAssistProcessor::perform(const AssistInterface *
                 addCompletions(&m_completions, completions, m_interface->fileNameIcon(), KeywordOrder);
                 return createContentProposal();
             }
-        }
+        }*/
         return 0;
     }
 

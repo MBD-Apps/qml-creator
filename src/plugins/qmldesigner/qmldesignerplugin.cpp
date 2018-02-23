@@ -53,10 +53,10 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <extensionsystem/pluginspec.h>
 #include <qmljs/qmljsmodelmanagerinterface.h>
-#include <projectexplorer/projectexplorerconstants.h>
-#include <projectexplorer/project.h>
-#include <projectexplorer/target.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/projectexplorerconstants.h>
+//#include <projectexplorer/project.h>
+//#include <projectexplorer/target.h>
+//#include <projectexplorer/session.h>
 
 #include <utils/hostosinfo.h>
 #include <utils/qtcassert.h>
@@ -209,8 +209,9 @@ void QmlDesignerPlugin::extensionsInitialized()
 
 static QStringList allUiQmlFilesforCurrentProject(const Utils::FileName &fileName)
 {
+	Q_UNUSED(fileName)
     QStringList list;
-    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName);
+/*    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName);
 
     if (currentProject) {
         foreach (const QString &fileName, currentProject->files(ProjectExplorer::Project::SourceFiles)) {
@@ -218,18 +219,19 @@ static QStringList allUiQmlFilesforCurrentProject(const Utils::FileName &fileNam
                 list.append(fileName);
         }
     }
-
+*/
     return list;
 }
 
 static QString projectPath(const Utils::FileName &fileName)
 {
+	Q_UNUSED(fileName)
     QString path;
-    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName);
+/*    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(fileName);
 
     if (currentProject)
         path = currentProject->projectDirectory().toString();
-
+*/
     return path;
 }
 
@@ -391,7 +393,7 @@ void QmlDesignerPlugin::activateAutoSynchronization()
     if (!currentDesignDocument()->isDocumentLoaded())
         currentDesignDocument()->loadDocument(currentDesignDocument()->plainTextEdit());
 
-    currentDesignDocument()->updateActiveQtVersion();
+    //currentDesignDocument()->updateActiveQtVersion();
     currentDesignDocument()->updateCurrentProject();
     d->mainWidget->enableWidgets();
     currentDesignDocument()->attachRewriterToModel();

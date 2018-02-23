@@ -46,8 +46,8 @@
 
 int internalMain(QGuiApplication *application)
 {
-    QCoreApplication::setOrganizationName("QtProject");
-    QCoreApplication::setOrganizationDomain("qt-project.org");
+    QCoreApplication::setOrganizationName("MBDApps");
+    QCoreApplication::setOrganizationDomain("mbdapps.com");
     QCoreApplication::setApplicationName("Qml2Puppet");
     QCoreApplication::setApplicationVersion("1.0.0");
 

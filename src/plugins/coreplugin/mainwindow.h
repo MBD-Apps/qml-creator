@@ -111,6 +111,7 @@ public:
 
 public slots:
     void openFileWith();
+	void newFile();
     void exit();
 
     bool showOptionsDialog(Id page = Id(), QWidget *parent = 0);
@@ -174,11 +175,11 @@ private:
     QMap<QWidget *, IContext *> m_contextWidgets;
 
     GeneralSettings *m_generalSettings = nullptr;
-    SystemSettings *m_systemSettings = nullptr;
-    ShortcutSettings *m_shortcutSettings = nullptr;
-    ToolSettings *m_toolSettings = nullptr;
-    MimeTypeSettings *m_mimeTypeSettings = nullptr;
-    SystemEditor *m_systemEditor = nullptr;
+    //SystemSettings *m_systemSettings = nullptr;
+    //ShortcutSettings *m_shortcutSettings = nullptr;
+    //ToolSettings *m_toolSettings = nullptr;
+    //MimeTypeSettings *m_mimeTypeSettings = nullptr;
+    //SystemEditor *m_systemEditor = nullptr;
 
     // actions
     QAction *m_focusToEditor = nullptr;

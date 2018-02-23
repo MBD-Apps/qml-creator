@@ -46,10 +46,10 @@ class QFileSystemWatcher;
 class QPainter;
 QT_END_NAMESPACE
 
-namespace ProjectExplorer {
-class Kit;
-class Project;
-}
+//namespace ProjectExplorer {
+//class Kit;
+//class Project;
+//}
 
 namespace QmlDesigner {
 
@@ -128,8 +128,8 @@ public:
 
     QImage statePreviewImage(const ModelNode &stateNode) const;
 
-    void setKit(ProjectExplorer::Kit *kit);
-    void setProject(ProjectExplorer::Project *project);
+    //void setKit(ProjectExplorer::Kit *kit);
+    //void setProject(ProjectExplorer::Project *project);
 
     void sendToken(const QString &token, int number, const QVector<ModelNode> &nodeVector);
 
@@ -197,8 +197,8 @@ private: //variables
     QImage m_baseStatePreviewImage;
     QTime m_lastCrashTime;
     NodeInstanceServerInterface::RunModus m_runModus;
-    ProjectExplorer::Kit *m_currentKit = nullptr;
-    ProjectExplorer::Project *m_currentProject = nullptr;
+    //ProjectExplorer::Kit *m_currentKit = nullptr;
+    //ProjectExplorer::Project *m_currentProject = nullptr;
     int m_restartProcessTimerId;
 };
 

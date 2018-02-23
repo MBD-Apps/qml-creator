@@ -39,9 +39,9 @@
 #include <qmljs/qmljspropertyreader.h>
 #include <qmljs/qmljsrewriter.h>
 #include <qmljstools/qmljsrefactoringchanges.h>
-#include <projectexplorer/session.h>
-#include <projectexplorer/projectnodes.h>
-#include <projectexplorer/project.h>
+//#include <projectexplorer/session.h>
+//#include <projectexplorer/projectnodes.h>
+//#include <projectexplorer/project.h>
 
 #include <utils/fileutils.h>
 
@@ -188,7 +188,7 @@ public:
         const bool openEditor = false;
         if (!refactoring.createFile(newFileName, newComponentSource, reindent, openEditor))
             return;
-
+/*
         if (path == QFileInfo(currentFileName).path()) {
             // hack for the common case, next version should use the wizard
             ProjectExplorer::Node * oldFileNode =
@@ -199,7 +199,7 @@ public:
                     containingFolder->addFiles(QStringList(newFileName));
             }
         }
-
+*/
         QString replacement = componentName + QLatin1String(" {\n");
         if (!m_idName.isEmpty())
             replacement += QLatin1String("id: ") + m_idName + QLatin1Char('\n');

@@ -61,6 +61,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QMenu>
+#include <QFileInfo>
 #include <QUuid>
 
 using namespace Core;
@@ -71,7 +72,7 @@ CorePlugin::CorePlugin()
   : m_mainWindow(0)
   , m_editMode(0)
   , m_designMode(0)
-  , m_locator(0)
+  //, m_locator(0)
 {
     qRegisterMetaType<Id>();
     qRegisterMetaType<Core::Search::TextPosition>();
@@ -82,7 +83,7 @@ CorePlugin::~CorePlugin()
     IWizardFactory::destroyFeatureProvider();
     Find::destroy();
 
-    delete m_locator;
+    //delete m_locator;
 
     if (m_editMode) {
         removeObject(m_editMode);
@@ -151,7 +152,7 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
     m_mainWindow = new MainWindow;
     if (args.overrideColor.isValid())
         m_mainWindow->setOverrideColor(args.overrideColor);
-    m_locator = new Locator;
+    //m_locator = new Locator;
     qsrand(QDateTime::currentDateTime().toTime_t());
     const bool success = m_mainWindow->init(errorMessage);
     if (success) {
@@ -168,7 +169,7 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
     SaveFile::initializeUmask();
 
     Find::initialize();
-    m_locator->initialize(this, arguments, errorMessage);
+    //m_locator->initialize(this, arguments, errorMessage);
 
     MacroExpander *expander = Utils::globalMacroExpander();
     expander->registerVariable("CurrentDate:ISO", tr("The current date (ISO)."),
@@ -226,7 +227,7 @@ void CorePlugin::extensionsInitialized()
     if (m_designMode->designModeIsRequired())
         addObject(m_designMode);
     Find::extensionsInitialized();
-    m_locator->extensionsInitialized();
+    //m_locator->extensionsInitialized();
     m_mainWindow->extensionsInitialized();
     if (ExtensionSystem::PluginManager::hasError()) {
         auto errorOverview = new ExtensionSystem::PluginErrorOverview(m_mainWindow);
@@ -239,7 +240,7 @@ void CorePlugin::extensionsInitialized()
 bool CorePlugin::delayedInitialize()
 {
     HelpManager::setupHelpManager();
-    m_locator->delayedInitialize();
+    //m_locator->delayedInitialize();
     IWizardFactory::allWizardFactories(); // scan for all wizard factories
     return true;
 }

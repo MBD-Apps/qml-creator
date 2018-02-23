@@ -6,11 +6,11 @@ QTC_LIB_DEPENDS += \
 QTC_PLUGIN_DEPENDS += \
     coreplugin \
     texteditor \
-    qmljseditor \
-    qtsupport \
-    projectexplorer \
-    qmakeprojectmanager \
-    resourceeditor
+    qmljseditor
+    #qtsupport \
+    #projectexplorer \
+    #qmakeprojectmanager \
+    #resourceeditor
 
 INCLUDEPATH *= \
     $$PWD \

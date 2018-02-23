@@ -30,7 +30,7 @@
 #include "qmljscodestylesettingspage.h"
 #include "qmljstoolsconstants.h"
 #include "qmljstoolssettings.h"
-#include "qmljsbundleprovider.h"
+//#include "qmljsbundleprovider.h"
 
 #include <coreplugin/icontext.h>
 #include <coreplugin/icore.h>
@@ -83,7 +83,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
     addAutoReleasedObject(locatorData);
     addAutoReleasedObject(new FunctionFilter(locatorData));
     addAutoReleasedObject(new QmlJSCodeStyleSettingsPage);
-    addAutoReleasedObject(new BasicBundleProvider);
+    //addAutoReleasedObject(new BasicBundleProvider);
 
     // Menus
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);

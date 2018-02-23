@@ -31,10 +31,10 @@
 
 #include <utils/fileutils.h>
 
-namespace ProjectExplorer {
-class Kit;
-class Project;
-}
+//namespace ProjectExplorer {
+//class Kit;
+//class Project;
+//}
 
 namespace QmlDesigner {
 
@@ -65,8 +65,8 @@ public:
     void setItemLibraryViewResourcePath(const QString &resourcePath);
     void setComponentNode(const ModelNode &componentNode);
     void setComponentViewToMaster();
-    void setNodeInstanceViewKit(ProjectExplorer::Kit *kit);
-    void setNodeInstanceViewProject(ProjectExplorer::Project *project);
+    //void setNodeInstanceViewKit(ProjectExplorer::Kit *kit);
+    //void setNodeInstanceViewProject(ProjectExplorer::Project *project);
 
     void resetPropertyEditorView();
 

@@ -41,7 +41,7 @@
 static void printErrorAndExit()
 {
     QTextStream err(stderr);
-    err << QString::fromLatin1("This crash handler will be called by Qt Creator itself. "
+    err << QString::fromLatin1("This crash handler will be called by QML Creator itself. "
                                "Do not call this manually.\n");
     exit(EXIT_FAILURE);
 }

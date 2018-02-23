@@ -109,7 +109,7 @@ void ViewManager::attachNodeInstanceView()
 
     qCInfo(viewBenchmark) << Q_FUNC_INFO;
 
-    setNodeInstanceViewKit(currentDesignDocument()->currentKit());
+    //setNodeInstanceViewKit(currentDesignDocument()->currentKit());
     currentModel()->setNodeInstanceView(&d->nodeInstanceView);
 
      qCInfo(viewBenchmark) << "NodeInstanceView:" << time.elapsed();
@@ -312,12 +312,12 @@ void ViewManager::setComponentViewToMaster()
 {
     d->componentView.setComponentToMaster();
 }
-
+/*
 void ViewManager::setNodeInstanceViewKit(ProjectExplorer::Kit *kit)
 {
     d->nodeInstanceView.setKit(kit);
 }
-
+*/
 void QmlDesigner::ViewManager::setNodeInstanceViewProject(ProjectExplorer::Project *project)
 {
     d->nodeInstanceView.setProject(project);

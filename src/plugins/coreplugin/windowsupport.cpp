@@ -193,7 +193,7 @@ void WindowList::updateTitle(QWidget *window)
     QTC_ASSERT(index < m_windowActions.size(), return);
     QString title = window->windowTitle();
     if (title.endsWith(QStringLiteral("- ") + Constants::IDE_DISPLAY_NAME))
-        title.chop(12);
+        title.chop(13);
     m_windowActions.at(index)->setText(title.trimmed());
 }
 

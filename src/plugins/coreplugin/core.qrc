@@ -6,5 +6,7 @@
     <file>images/category_design.png</file>
     <file>images/category_locator.png</file>
     <file>images/category_texteditor.png</file>
+    <file alias="images/qmlcreatorlogo-big.png">images/logo/128/MBDApps-qmlcreator.png</file>
+	<file alias="images/qmlcreatorlogo-big@2x.png">images/logo/256/MBDApps-qmlcreator.png</file>
     </qresource>
 </RCC>

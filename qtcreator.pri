@@ -96,11 +96,11 @@ isEmpty(IDE_BUILD_TREE) {
 
 IDE_APP_PATH = $$IDE_BUILD_TREE/bin
 osx {
-    IDE_APP_TARGET   = "Qt Creator"
+    IDE_APP_TARGET   = "QML Creator"
 
-    # check if IDE_BUILD_TREE is actually an existing Qt Creator.app,
+    # check if IDE_BUILD_TREE is actually an existing QML Creator.app,
     # for building against a binary package
-    exists($$IDE_BUILD_TREE/Contents/MacOS/Qt Creator): IDE_APP_BUNDLE = $$IDE_BUILD_TREE
+    exists($$IDE_BUILD_TREE/Contents/MacOS/QML Creator): IDE_APP_BUNDLE = $$IDE_BUILD_TREE
     else: IDE_APP_BUNDLE = $$IDE_APP_PATH/$${IDE_APP_TARGET}.app
 
     # set output path if not set manually
@@ -126,7 +126,7 @@ osx {
     INSTALL_APP_PATH     = $$QTC_PREFIX/
 } else {
     contains(TEMPLATE, vc.*):vcproj = 1
-    IDE_APP_TARGET   = qtcreator
+    IDE_APP_TARGET   = qmlcreator
 
     # target output path if not set manually
     isEmpty(IDE_OUTPUT_PATH): IDE_OUTPUT_PATH = $$IDE_BUILD_TREE

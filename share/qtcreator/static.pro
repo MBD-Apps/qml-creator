@@ -7,22 +7,22 @@ STATIC_OUTPUT_BASE = $$IDE_DATA_PATH
 STATIC_INSTALL_BASE = $$INSTALL_DATA_PATH
 
 DATA_DIRS = \
-    examplebrowser \
+    #examplebrowser \
     snippets \
-    templates \
+    #templates \
     themes \
-    designer \
-    schemes \
+    #designer \
+    #schemes \
     styles \
-    rss \
-    debugger \
+    #rss \
+    #debugger \
     qmldesigner \
     qmlicons \
     qml \
-    qml-type-descriptions \
-    modeleditor \
-    glsl \
-    cplusplus
+    qml-type-descriptions
+    #modeleditor \
+    #glsl \
+    #cplusplus
 macx: DATA_DIRS += scripts
 
 for(data_dir, DATA_DIRS) {

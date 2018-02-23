@@ -36,7 +36,7 @@
 #include <QSettings>
 #include <QStyle>
 
-static const char SettingsApplication[] = "QtCreator";
+static const char SettingsApplication[] = "QmlCreator";
 static const char SettingsKeySkipWarningAbortingBacktrace[]
     = "CrashHandler/SkipWarningAbortingBacktrace";
 

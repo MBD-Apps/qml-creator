@@ -30,9 +30,9 @@
 #include "qmljseditorplugin.h"
 #include "qmljshighlighter.h"
 #include "qmljsoutline.h"
-#include "qmljspreviewrunner.h"
+//#include "qmljspreviewrunner.h"
 #include "qmljsquickfixassist.h"
-#include "qmltaskmanager.h"
+//#include "qmltaskmanager.h"
 #include "quicktoolbar.h"
 
 #include <qmljs/qmljsicons.h>
@@ -48,9 +48,9 @@
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/actionmanager/command.h>
 #include <coreplugin/editormanager/editormanager.h>
-#include <projectexplorer/taskhub.h>
-#include <projectexplorer/project.h>
-#include <projectexplorer/projecttree.h>
+//#include <projectexplorer/taskhub.h>
+//#include <projectexplorer/project.h>
+//#include <projectexplorer/projecttree.h>
 #include <projectexplorer/projectexplorerconstants.h>
 #include <texteditor/snippets/snippetprovider.h>
 #include <texteditor/texteditorconstants.h>
@@ -68,7 +68,7 @@
 #include <QAction>
 
 using namespace QmlJSEditor::Constants;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;
 using namespace Core;
 
 enum {
@@ -105,7 +105,7 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     TextEditor::SnippetProvider::registerGroup(Constants::QML_SNIPPETS_GROUP_ID,
                                                tr("QML", "SnippetProvider"),
                                                &QmlJSEditorFactory::decorateEditor);
-
+/*
     // QML task updating manager
     m_qmlTaskManager = new QmlTaskManager;
     addAutoReleasedObject(m_qmlTaskManager);
@@ -119,7 +119,7 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
             m_qmlTaskManager, &QmlTaskManager::updateMessages);
     connect(m_modelManager, &QmlJS::ModelManagerInterface::aboutToRemoveFiles,
             m_qmlTaskManager, &QmlTaskManager::documentsRemoved);
-
+*/
     Context context(Constants::C_QMLJSEDITOR_ID);
 
     addAutoReleasedObject(new QmlJSEditorFactory);
@@ -147,13 +147,13 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     connect(renameUsagesAction, &QAction::triggered, this, &QmlJSEditorPlugin::renameUsages);
     contextMenu->addAction(cmd);
     qmlToolsMenu->addAction(cmd);
-
+/*
     QAction *semanticScan = new QAction(tr("Run Checks"), this);
     cmd = ActionManager::registerAction(semanticScan, Id(Constants::RUN_SEMANTIC_SCAN));
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+C")));
     connect(semanticScan, &QAction::triggered, this, &QmlJSEditorPlugin::runSemanticScan);
     qmlToolsMenu->addAction(cmd);
-
+*/
     m_reformatFileAction = new QAction(tr("Reformat File"), this);
     cmd = ActionManager::registerAction(m_reformatFileAction, Id(Constants::REFORMAT_FILE), context);
     connect(m_reformatFileAction, &QAction::triggered, this, &QmlJSEditorPlugin::reformatFile);
@@ -211,8 +211,8 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
 
 void QmlJSEditorPlugin::extensionsInitialized()
 {
-    TaskHub::addCategory(Constants::TASK_CATEGORY_QML, tr("QML"));
-    TaskHub::addCategory(Constants::TASK_CATEGORY_QML_ANALYSIS, tr("QML Analysis"), false);
+    //TaskHub::addCategory(Constants::TASK_CATEGORY_QML, tr("QML"));
+    //TaskHub::addCategory(Constants::TASK_CATEGORY_QML_ANALYSIS, tr("QML Analysis"), false);
 }
 
 ExtensionSystem::IPlugin::ShutdownFlag QmlJSEditorPlugin::aboutToShutdown()
@@ -323,14 +323,14 @@ void QmlJSEditorPlugin::currentEditorChanged(IEditor *editor)
                 this, &QmlJSEditorPlugin::checkCurrentEditorSemanticInfoUpToDate);
     }
 }
-
+/*
 void QmlJSEditorPlugin::runSemanticScan()
 {
     m_qmlTaskManager->updateSemanticMessagesNow();
     TaskHub::setCategoryVisibility(Constants::TASK_CATEGORY_QML_ANALYSIS, true);
     TaskHub::requestPopup();
 }
-
+*/
 void QmlJSEditorPlugin::checkCurrentEditorSemanticInfoUpToDate()
 {
     const bool semanticInfoUpToDate = m_currentDocument && !m_currentDocument->isSemanticInfoOutdated();

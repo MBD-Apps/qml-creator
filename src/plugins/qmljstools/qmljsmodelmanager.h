@@ -55,15 +55,15 @@ protected:
     void writeMessageInternal(const QString &msg) const override;
     WorkingCopy workingCopyInternal() const override;
     void addTaskInternal(QFuture<void> result, const QString &msg, const char *taskId) const override;
-    ProjectInfo defaultProjectInfoForProject(ProjectExplorer::Project *project) const override;
+    //ProjectInfo defaultProjectInfoForProject(ProjectExplorer::Project *project) const override;
 private:
-    void updateDefaultProjectInfo();
+    //void updateDefaultProjectInfo();
     void loadDefaultQmlTypeDescriptions();
     QHash<QString, QmlJS::Dialect> initLanguageForSuffix() const;
 };
 
 } // namespace Internal
 
-QMLJSTOOLS_EXPORT void setupProjectInfoQmlBundles(QmlJS::ModelManagerInterface::ProjectInfo &projectInfo);
+//QMLJSTOOLS_EXPORT void setupProjectInfoQmlBundles(QmlJS::ModelManagerInterface::ProjectInfo &projectInfo);
 
 } // namespace QmlJSTools

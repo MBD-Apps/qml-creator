@@ -26,8 +26,8 @@
 #include "mainwindow.h"
 #include "icore.h"
 #include "jsexpander.h"
-#include "toolsettings.h"
-#include "mimetypesettings.h"
+//#include "toolsettings.h"
+//#include "mimetypesettings.h"
 #include "fancytabwidget.h"
 #include "documentmanager.h"
 #include "generalsettings.h"
@@ -48,7 +48,7 @@
 #include "statusbarwidget.h"
 #include "systemsettings.h"
 #include "externaltoolmanager.h"
-#include "editormanager/systemeditor.h"
+//#include "editormanager/systemeditor.h"
 #include "windowsupport.h"
 #include "coreicons.h"
 
@@ -59,7 +59,7 @@
 #include <coreplugin/actionmanager/command.h>
 #include <coreplugin/dialogs/newdialog.h>
 #include <coreplugin/dialogs/settingsdialog.h>
-#include <coreplugin/dialogs/shortcutsettings.h>
+//#include <coreplugin/dialogs/shortcutsettings.h>
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/editormanager_p.h>
 #include <coreplugin/editormanager/ieditor.h>
@@ -118,10 +118,10 @@ MainWindow::MainWindow() :
     m_modeStack(new FancyTabWidget(this)),
     m_generalSettings(new GeneralSettings),
     m_systemSettings(new SystemSettings),
-    m_shortcutSettings(new ShortcutSettings),
-    m_toolSettings(new ToolSettings),
-    m_mimeTypeSettings(new MimeTypeSettings),
-    m_systemEditor(new SystemEditor),
+    //m_shortcutSettings(new ShortcutSettings),
+    //m_toolSettings(new ToolSettings),
+    //m_mimeTypeSettings(new MimeTypeSettings),
+    //m_systemEditor(new SystemEditor),
     m_toggleLeftSideBarButton(new QToolButton),
     m_toggleRightSideBarButton(new QToolButton)
 {
@@ -132,7 +132,7 @@ MainWindow::MainWindow() :
 
     setWindowTitle(Constants::IDE_DISPLAY_NAME);
     if (HostOsInfo::isLinuxHost())
-        QApplication::setWindowIcon(Icons::QTCREATORLOGO_BIG.icon());
+        QApplication::setWindowIcon(Icons::QMLCREATORLOGO_BIG.icon());
     QCoreApplication::setApplicationName(QLatin1String(Constants::IDE_CASED_ID));
     QCoreApplication::setApplicationVersion(QLatin1String(Constants::IDE_VERSION_LONG));
     QCoreApplication::setOrganizationName(QLatin1String(Constants::IDE_SETTINGSVARIANT_STR));
@@ -243,28 +243,28 @@ MainWindow::~MainWindow()
     delete m_windowSupport;
     m_windowSupport = nullptr;
 
-    PluginManager::removeObject(m_shortcutSettings);
+    //PluginManager::removeObject(m_shortcutSettings);
     PluginManager::removeObject(m_generalSettings);
     PluginManager::removeObject(m_systemSettings);
-    PluginManager::removeObject(m_toolSettings);
-    PluginManager::removeObject(m_mimeTypeSettings);
-    PluginManager::removeObject(m_systemEditor);
+    //PluginManager::removeObject(m_toolSettings);
+    //PluginManager::removeObject(m_mimeTypeSettings);
+    //PluginManager::removeObject(m_systemEditor);
     delete m_externalToolManager;
     m_externalToolManager = nullptr;
     delete m_messageManager;
     m_messageManager = nullptr;
-    delete m_shortcutSettings;
-    m_shortcutSettings = nullptr;
+    //delete m_shortcutSettings;
+    //m_shortcutSettings = nullptr;
     delete m_generalSettings;
     m_generalSettings = nullptr;
     delete m_systemSettings;
     m_systemSettings = nullptr;
-    delete m_toolSettings;
-    m_toolSettings = nullptr;
-    delete m_mimeTypeSettings;
-    m_mimeTypeSettings = nullptr;
-    delete m_systemEditor;
-    m_systemEditor = nullptr;
+    //delete m_toolSettings;
+    //m_toolSettings = nullptr;
+    //delete m_mimeTypeSettings;
+    //m_mimeTypeSettings = nullptr;
+    //delete m_systemEditor;
+    //m_systemEditor = nullptr;
     delete m_printer;
     m_printer = nullptr;
     delete m_vcsManager;
@@ -317,10 +317,10 @@ bool MainWindow::init(QString *errorMessage)
 
     PluginManager::addObject(m_generalSettings);
     PluginManager::addObject(m_systemSettings);
-    PluginManager::addObject(m_shortcutSettings);
-    PluginManager::addObject(m_toolSettings);
-    PluginManager::addObject(m_mimeTypeSettings);
-    PluginManager::addObject(m_systemEditor);
+    //PluginManager::addObject(m_shortcutSettings);
+    //PluginManager::addObject(m_toolSettings);
+    //PluginManager::addObject(m_mimeTypeSettings);
+    //PluginManager::addObject(m_systemEditor);
 
     // Add widget to the bottom, we create the view here instead of inside the
     // OutputPaneManager, since the StatusBarManager needs to be initialized before
@@ -335,7 +335,7 @@ bool MainWindow::init(QString *errorMessage)
 void MainWindow::extensionsInitialized()
 {
     EditorManagerPrivate::extensionsInitialized();
-    MimeTypeSettings::restoreSettings();
+    //MimeTypeSettings::restoreSettings();
     m_windowSupport = new WindowSupport(this, Context("Core.MainWindow"));
     m_windowSupport->setCloseActionEnabled(false);
     m_statusBarManager->extensionsInitalized();
@@ -501,22 +501,25 @@ void MainWindow::registerDefaultActions()
 
     // New File Action
     QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), Utils::Icons::NEWFILE.icon());
-    m_newAction = new QAction(icon, tr("&New File or Project..."), this);
+    //m_newAction = new QAction(icon, tr("&New File or Project..."), this);
+    m_newAction = new QAction(icon, tr("&New QML File"), this);
     cmd = ActionManager::registerAction(m_newAction, Constants::NEW);
     cmd->setDefaultKeySequence(QKeySequence::New);
     mfile->addAction(cmd, Constants::G_FILE_NEW);
-    connect(m_newAction, &QAction::triggered, this, []() {
-        if (!ICore::isNewItemDialogRunning()) {
-            ICore::showNewItemDialog(tr("New File or Project", "Title of dialog"),
-                                     IWizardFactory::allWizardFactories(), QString());
-        } else {
-            ICore::raiseWindow(ICore::newItemDialog());
-        }
-    });
+    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+    //connect(m_newAction, &QAction::triggered, this, []() {
+    //    if (!ICore::isNewItemDialogRunning()) {
+    //        ICore::showNewItemDialog(tr("New File or Project", "Title of dialog"),
+    //                                 IWizardFactory::allWizardFactories(), QString());
+    //    } else {
+    //        ICore::raiseWindow(ICore::newItemDialog());
+    //    }
+    //});
 
     // Open Action
     icon = QIcon::fromTheme(QLatin1String("document-open"), Utils::Icons::OPENFILE.icon());
-    m_openAction = new QAction(icon, tr("&Open File or Project..."), this);
+    //m_openAction = new QAction(icon, tr("&Open File or Project..."), this);
+    m_openAction = new QAction(icon, tr("&Open QML File"), this);
     cmd = ActionManager::registerAction(m_openAction, Constants::OPEN);
     cmd->setDefaultKeySequence(QKeySequence::Open);
     mfile->addAction(cmd, Constants::G_FILE_OPEN);
@@ -775,6 +778,26 @@ void MainWindow::registerDefaultActions()
 void MainWindow::openFile()
 {
     openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
+}
+void MainWindow::newFile()
+{
+    QString startPath;
+    if (EditorManager::currentDocument() && !EditorManager::currentDocument()->isTemporary())
+        startPath = EditorManager::currentDocument()->filePath().toString();
+    if (startPath.isEmpty() && DocumentManager::useProjectsDirectory())
+        startPath = DocumentManager::projectsDirectory();
+
+    QString newFileName = DocumentManager::getSaveFileNameWithExtension(tr("Create New QML File"),
+                                                       startPath, tr("QML (*.qml)"));
+
+    if (!newFileName.isEmpty()) {
+        QString qmlTemplateFile = QDir::cleanPath(QCoreApplication::applicationDirPath() + QString("/../tools/main.qml"));
+        if (QFile::copy(qmlTemplateFile, newFileName)) {
+            openFiles(QStringList(newFileName), ICore::SwitchMode);
+        } else {
+            qWarning() << "Could not create " << newFileName;
+        }
+    }
 }
 
 static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fileFactories,

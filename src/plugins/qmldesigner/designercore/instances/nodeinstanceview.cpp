@@ -120,7 +120,7 @@ NodeInstanceView::~NodeInstanceView()
 {
     removeAllInstanceNodeRelationships();
     delete nodeInstanceServer();
-    m_currentKit = 0;
+    //m_currentKit = 0;
 }
 
 //\{
@@ -154,7 +154,8 @@ bool isSkippedNode(const ModelNode &node)
 void NodeInstanceView::modelAttached(Model *model)
 {
     AbstractView::modelAttached(model);
-    auto server = new NodeInstanceServerProxy(this, m_runModus, m_currentKit, m_currentProject);
+    //auto server = new NodeInstanceServerProxy(this, m_runModus, m_currentKit, m_currentProject);
+    auto server = new NodeInstanceServerProxy(this, m_runModus);
     m_nodeInstanceServer = server;
     m_lastCrashTime.start();
     connect(server, &NodeInstanceServerProxy::processCrashed, this, &NodeInstanceView::handleCrash);
@@ -213,7 +214,8 @@ void NodeInstanceView::restartProcess()
     if (model()) {
         delete nodeInstanceServer();
 
-        auto server = new NodeInstanceServerProxy(this, m_runModus, m_currentKit, m_currentProject);
+        //auto server = new NodeInstanceServerProxy(this, m_runModus, m_currentKit, m_currentProject);
+        auto server = new NodeInstanceServerProxy(this, m_runModus);
         m_nodeInstanceServer = server;
         connect(server, &NodeInstanceServerProxy::processCrashed, this, &NodeInstanceView::handleCrash);
 
@@ -1198,7 +1200,7 @@ QImage NodeInstanceView::statePreviewImage(const ModelNode &stateNode) const
 
     return m_statePreviewImage.value(stateNode);
 }
-
+/*
 void NodeInstanceView::setKit(ProjectExplorer::Kit *newKit)
 {
     if (m_currentKit != newKit) {
@@ -1214,7 +1216,7 @@ void NodeInstanceView::setProject(ProjectExplorer::Project *project)
         restartProcess();
     }
 }
-
+*/
 void NodeInstanceView::statePreviewImagesChanged(const StatePreviewImageChangedCommand &command)
 {
     if (!model())

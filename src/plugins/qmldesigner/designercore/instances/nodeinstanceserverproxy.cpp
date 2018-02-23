@@ -66,10 +66,10 @@
 #include <utils/hostosinfo.h>
 #include <coreplugin/messagebox.h>
 #include <coreplugin/editormanager/editormanager.h>
-#include <projectexplorer/kit.h>
-#include <qtsupport/qtkitinformation.h>
-#include <qtsupport/baseqtversion.h>
-#include <qtsupport/qtsupportconstants.h>
+//#include <projectexplorer/kit.h>
+//#include <qtsupport/qtkitinformation.h>
+//#include <qtsupport/baseqtversion.h>
+//#include <qtsupport/qtsupportconstants.h>
 
 #include <QLocalServer>
 #include <QLocalSocket>
@@ -101,9 +101,10 @@ void NodeInstanceServerProxy::showCannotConnectToPuppetWarningAndSwitchToEditMod
 }
 
 NodeInstanceServerProxy::NodeInstanceServerProxy(NodeInstanceView *nodeInstanceView,
-                                                 RunModus runModus,
-                                                 ProjectExplorer::Kit *kit,
-                                                 ProjectExplorer::Project *project)
+                                                 RunModus runModus)
+//                                                 RunModus runModus,
+//                                                 ProjectExplorer::Kit *kit,
+//                                                 ProjectExplorer::Project *project)
     : NodeInstanceServerInterface(nodeInstanceView),
       m_localServer(new QLocalServer(this)),
       m_nodeInstanceView(nodeInstanceView),
@@ -116,7 +117,8 @@ NodeInstanceServerProxy::NodeInstanceServerProxy(NodeInstanceView *nodeInstanceV
    m_localServer->listen(socketToken);
    m_localServer->setMaxPendingConnections(3);
 
-   PuppetCreator puppetCreator(kit, project, nodeInstanceView->model());
+   //PuppetCreator puppetCreator(kit, project, nodeInstanceView->model());
+   PuppetCreator puppetCreator(nodeInstanceView->model());
    puppetCreator.setQrcMappingString(qrcMappingString());
 
    puppetCreator.createQml2PuppetExecutableIfMissing();
