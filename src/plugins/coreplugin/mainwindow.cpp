@@ -785,7 +785,7 @@ void MainWindow::newFile()
     if (EditorManager::currentDocument() && !EditorManager::currentDocument()->isTemporary())
         startPath = EditorManager::currentDocument()->filePath().toString();
     if (startPath.isEmpty() && DocumentManager::useProjectsDirectory())
-        startPath = DocumentManager::projectsDirectory();
+        startPath = DocumentManager::projectsDirectory().toString();
 
     QString newFileName = DocumentManager::getSaveFileNameWithExtension(tr("Create New QML File"),
                                                        startPath, tr("QML (*.qml)"));

@@ -347,13 +347,13 @@ void QmlJSEditorPlugin::autoFormatOnSave(Core::IDocument *document)
         return;
 
     // Check if file is contained in the current project (if wished)
-    if (QmlJsEditingSettings::get().autoFormatOnlyCurrentProject()) {
+    /*if (QmlJsEditingSettings::get().autoFormatOnlyCurrentProject()) {
         const ProjectExplorer::Project *pro = ProjectExplorer::ProjectTree::currentProject();
         if (!pro || !pro->files(ProjectExplorer::Project::SourceFiles).contains(
                     document->filePath().toString())) {
             return;
         }
-    }
+    }*/
 
     reformatFile();
 }

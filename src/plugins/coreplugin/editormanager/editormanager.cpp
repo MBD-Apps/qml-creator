@@ -2728,7 +2728,7 @@ QStringList EditorManager::getOpenFileNames()
     //QString selectedFilter;
     QString selectedFilter = tr("QML (*.qml)");
     //const QString &fileFilters = DocumentManager::allDocumentFactoryFiltersString(&selectedFilter);
-    //const QString &fileFilters = tr("QML (*.qml)");
+    const QString &fileFilters = tr("QML (*.qml)");
     return DocumentManager::getOpenFileNames(fileFilters, QString(), &selectedFilter);
 }
 

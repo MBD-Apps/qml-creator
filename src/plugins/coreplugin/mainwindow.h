@@ -175,7 +175,7 @@ private:
     QMap<QWidget *, IContext *> m_contextWidgets;
 
     GeneralSettings *m_generalSettings = nullptr;
-    //SystemSettings *m_systemSettings = nullptr;
+    SystemSettings *m_systemSettings = nullptr;
     //ShortcutSettings *m_shortcutSettings = nullptr;
     //ToolSettings *m_toolSettings = nullptr;
     //MimeTypeSettings *m_mimeTypeSettings = nullptr;

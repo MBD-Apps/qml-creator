@@ -114,7 +114,7 @@ private:
     const DesignerSettings m_designerSettings;
 #endif
     QString m_qrcMapping;
-    ProjectExplorer::Project *m_currentProject = nullptr;
+    //ProjectExplorer::Project *m_currentProject = nullptr;
 };
 
 } // namespace QmlDesigner

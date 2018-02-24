@@ -82,22 +82,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>autoFormatOnSave</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>autoFormatOnlyCurrentProject</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>216</x>
-     <y>40</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>216</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -53,7 +53,7 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <extensionsystem/pluginspec.h>
 #include <qmljs/qmljsmodelmanagerinterface.h>
-//#include <projectexplorer/projectexplorerconstants.h>
+#include <projectexplorer/projectexplorerconstants.h>
 //#include <projectexplorer/project.h>
 //#include <projectexplorer/target.h>
 //#include <projectexplorer/session.h>
@@ -394,7 +394,7 @@ void QmlDesignerPlugin::activateAutoSynchronization()
         currentDesignDocument()->loadDocument(currentDesignDocument()->plainTextEdit());
 
     //currentDesignDocument()->updateActiveQtVersion();
-    currentDesignDocument()->updateCurrentProject();
+    //currentDesignDocument()->updateCurrentProject();
     d->mainWidget->enableWidgets();
     currentDesignDocument()->attachRewriterToModel();
 

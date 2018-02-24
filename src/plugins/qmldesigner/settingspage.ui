@@ -223,6 +223,9 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QRadioButton" name="useDefaultPuppetRadioButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="toolTip">
          <string>If you select this radio button, Qt Quick Designer always uses the QML emulation layer (QML Puppet) located at the following path.</string>
         </property>
@@ -249,7 +252,7 @@
         <item>
          <widget class="Utils::PathChooser" name="fallbackPuppetPathLineEdit">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="toolTip">
            <string>Path to the QML emulation layer executable (qmlpuppet).</string>
@@ -258,6 +261,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="resetFallbackPuppetPathButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="toolTip">
            <string>Resets the path to the built-in QML emulation layer.</string>
           </property>
@@ -270,6 +276,9 @@
       </item>
       <item>
        <widget class="QRadioButton" name="useQtRelatedPuppetRadioButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Use QML emulation layer that is built with the selected Qt</string>
         </property>
@@ -290,12 +299,15 @@
         <item>
          <widget class="Utils::PathChooser" name="puppetBuildPathLineEdit">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="resetQmlPuppetBuildPathButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Reset Path</string>
           </property>
@@ -418,6 +430,9 @@
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
        <widget class="QCheckBox" name="designerShowDebuggerCheckBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Show the debugging view</string>
         </property>
@@ -459,6 +474,9 @@
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="designerEnableDebuggerCheckBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Enable the debugging view</string>
         </property>

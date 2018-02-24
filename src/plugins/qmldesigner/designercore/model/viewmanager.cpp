@@ -317,12 +317,12 @@ void ViewManager::setNodeInstanceViewKit(ProjectExplorer::Kit *kit)
 {
     d->nodeInstanceView.setKit(kit);
 }
-*/
+
 void QmlDesigner::ViewManager::setNodeInstanceViewProject(ProjectExplorer::Project *project)
 {
     d->nodeInstanceView.setProject(project);
 }
-
+*/
 QList<WidgetInfo> ViewManager::widgetInfos() const
 {
     QList<WidgetInfo> widgetInfoList;

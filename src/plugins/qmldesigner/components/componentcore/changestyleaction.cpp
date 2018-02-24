@@ -25,8 +25,8 @@
 
 #include "changestyleaction.h"
 
-#include <projectexplorer/project.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/project.h>
+//#include <projectexplorer/session.h>
 
 #include <QComboBox>
 #include <QSettings>
@@ -35,13 +35,14 @@ namespace QmlDesigner {
 
 static QString styleConfigFileName(const QString &qmlFileName)
 {
-    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(Utils::FileName::fromString(qmlFileName));
+/*    ProjectExplorer::Project *currentProject = ProjectExplorer::SessionManager::projectForFile(Utils::FileName::fromString(qmlFileName));
 
     if (currentProject)
         foreach (const QString &fileName, currentProject->files(ProjectExplorer::Project::SourceFiles))
             if (fileName.endsWith("qtquickcontrols2.conf"))
                 return fileName;
-
+*/
+    Q_UNUSED(qmlFileName)
     return QString();
 }
 
@@ -96,7 +97,7 @@ QWidget *ChangeStyleWidgetAction::createWidget(QWidget *parent)
 
         if (style.isEmpty())
             return;
-
+/*
         const Utils::FileName configFileName = Utils::FileName::fromString(styleConfigFileName(qmlFileName));
 
         if (configFileName.exists()) {
@@ -104,7 +105,7 @@ QWidget *ChangeStyleWidgetAction::createWidget(QWidget *parent)
              infiFile.setValue("Controls/Style", style);
              if (view)
                  view->resetPuppet();
-        }
+        }*/
     });
 
     return comboBox;
@@ -122,15 +123,15 @@ void ChangeStyleAction::currentContextChanged(const SelectionContext &selectionC
             return;
 
         m_action->qmlFileName = fileName;
-
+/*
         const QString confFileName = styleConfigFileName(fileName);
 
         if (Utils::FileName::fromString(confFileName).exists()) {
             QSettings infiFile(confFileName, QSettings::IniFormat);
             m_action->handleModelUpdate(infiFile.value("Controls/Style", "Default").toString());
-        } else {
+        } else {*/
             m_action->handleModelUpdate("");
-        }
+        //}
 
     }
 }

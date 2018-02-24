@@ -62,7 +62,7 @@ public:
     };
 
     explicit NodeInstanceServerProxy(NodeInstanceView *nodeInstanceView,
-                                     RunModus runModus)
+                                     RunModus runModus);
 //                                     RunModus runModus,
 //                                     ProjectExplorer::Kit *kit,
 //                                     ProjectExplorer::Project *project);

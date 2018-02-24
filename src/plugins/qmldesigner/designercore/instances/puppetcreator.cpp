@@ -38,8 +38,8 @@
 //#include <projectexplorer/project.h>
 //#include <projectexplorer/projectexplorerconstants.h>
 //#include <projectexplorer/toolchain.h>
-#include <qmakeprojectmanager/qmakeproject.h>
-#include <qmakeprojectmanager/qmakenodes.h>
+//#include <qmakeprojectmanager/qmakeproject.h>
+//#include <qmakeprojectmanager/qmakenodes.h>
 #include <coreplugin/messagebox.h>
 #include <coreplugin/icore.h>
 //#include <qtsupport/baseqtversion.h>
@@ -173,7 +173,7 @@ PuppetCreator::PuppetCreator(/*ProjectExplorer::Kit *kit,
 #ifndef QMLDESIGNER_TEST
     , m_designerSettings(QmlDesignerPlugin::instance()->settings())
 #endif
-    , m_currentProject(project)
+//    , m_currentProject(project)
 {
 }
 
@@ -414,14 +414,14 @@ QProcessEnvironment PuppetCreator::processEnvironment() const
 {
     static const QString pathSep = Utils::HostOsInfo::pathListSeparator();
     Utils::Environment environment = Utils::Environment::systemEnvironment();
-    //if (!useOnlyFallbackPuppet())
-    //    m_kit->addToEnvironment(environment);
+    /*if (!useOnlyFallbackPuppet())
+        m_kit->addToEnvironment(environment);
     const QtSupport::BaseQtVersion *qt = QtSupport::QtKitInformation::qtVersion(m_kit);
     if (QTC_GUARD(qt)) { // Kits without a Qt version should not have a puppet!
         // Update PATH to include QT_HOST_BINS
         const Utils::FileName qtBinPath = qt->binPath();
         environment.prependOrSetPath(qtBinPath.toString());
-    }
+    }*/
     environment.set("QML_BAD_GUI_RENDER_LOOP", "true");
     environment.set("QML_USE_MOCKUPS", "true");
     environment.set("QML_PUPPET_MODE", "true");
@@ -468,7 +468,7 @@ QProcessEnvironment PuppetCreator::processEnvironment() const
 
     if (!styleConfigFileName.isEmpty())
         environment.appendOrSet("QT_QUICK_CONTROLS_CONF", styleConfigFileName);
-
+/*
     if (m_currentProject) {
         auto qmakeProject = qobject_cast<QmakeProjectManager::QmakeProject *>(m_currentProject);
         if (qmakeProject) {
@@ -476,7 +476,7 @@ QProcessEnvironment PuppetCreator::processEnvironment() const
             importPaths.append(designerImports);
         }
     }
-
+*/
     if (m_availablePuppetType == FallbackPuppet)
         importPaths.prepend(QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath));
 
