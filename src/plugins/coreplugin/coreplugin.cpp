@@ -235,6 +235,11 @@ void CorePlugin::extensionsInitialized()
         errorOverview->setModal(true);
         errorOverview->show();
     }
+    foreach (QString arg, ExtensionSystem::PluginManager::arguments()) {
+        QFileInfo fileInfoForArg(arg);
+        if (fileInfoForArg.exists() && fileInfoForArg.isFile())
+            m_mainWindow->openFiles(QStringList(arg), ICore::CanContainLineAndColumnNumbers);
+    }
 }
 
 bool CorePlugin::delayedInitialize()
